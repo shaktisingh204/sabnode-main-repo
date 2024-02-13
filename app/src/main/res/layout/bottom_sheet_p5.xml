@@ -37,30 +37,70 @@
 				android:layout_height="3dp"
 				android:padding="8dp"
 				android:background="#D50000"
-				android:orientation="horizontal" />
-			<com.google.android.material.textfield.TextInputLayout
+				android:orientation="horizontal"
+				android:paddingBottom="40dp"/>
+			<LinearLayout
+				android:id="@+id/messageback"
 				android:layout_width="match_parent"
-				android:layout_height="50dp"
-				android:layout_margin="8dp"
-				app:hintTextColor="@color/md_red_A700"
-				app:boxStrokeColor="#D50000">
+				android:layout_height="60dp"
+				android:orientation="horizontal"
+				android:layout_marginTop="40dp"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:gravity="center_horizontal|center_vertical"
+				android:background="@color/newedittext">
 				<EditText
+					android:id="@+id/messagetext"
 					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:hint="Enter Long Url"
-					android:textColorHint="@color/md_red_A700"
-					android:textColor="@color/md_red_A700"
-					android:background="@color/white"
-					android:textStyle="bold"/>
+					android:layout_height="55dp"
+					android:background="@android:color/transparent"
+					android:textColorHint="#717595"
+					android:textColor="#3E4775"
+					android:layout_weight="1"
+					android:textStyle="bold"
+					android:hint="Long Url"
+					android:textSize="14dp"
+					android:layout_gravity="center_vertical"
+					android:padding="4dp"
+					android:paddingStart="25dp"
+					android:inputType="textEmailAddress"
+					android:fontFamily="@font/gpp"/>
 
-			</com.google.android.material.textfield.TextInputLayout>
+			</LinearLayout>
+			<LinearLayout
+				android:id="@+id/aliasback"
+				android:layout_width="match_parent"
+				android:layout_height="60dp"
+				android:orientation="horizontal"
+				android:layout_margin="10dp"
+				android:gravity="center_horizontal|center_vertical"
+				android:background="@color/newedittext">
+				<EditText
+					android:id="@+id/alias"
+					android:layout_width="match_parent"
+					android:layout_height="55dp"
+					android:background="@android:color/transparent"
+					android:textColorHint="#717595"
+					android:textColor="#3E4775"
+					android:layout_weight="1"
+					android:textStyle="bold"
+					android:hint="Short Url (your-custom-alias)"
+					android:textSize="14dp"
+					android:layout_gravity="center_vertical"
+					android:padding="4dp"
+					android:paddingStart="25dp"
+					android:inputType="textEmailAddress"
+					android:fontFamily="@font/gpp"/>
+
+			</LinearLayout>
 			<TextView
 				android:id="@+id/t1"
 				android:focusable="false"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:visibility="gone"
 				android:layout_marginLeft="17dp"
-				android:layout_marginTop="47dp"
+				android:layout_marginTop="17dp"
 				android:layout_marginRight="17dp"
 				android:gravity="center_horizontal|center_vertical"
 				android:text="Nothing found !"
@@ -74,6 +114,7 @@
 				android:layout_marginLeft="17dp"
 				android:layout_marginTop="10dp"
 				android:layout_marginRight="17dp"
+				android:visibility="gone"
 				android:layout_marginBottom="10dp"
 				android:gravity="center_horizontal|center_vertical"
 				android:text="It's seemed like you don't have any project to show &amp; edit, try to add a new project !"

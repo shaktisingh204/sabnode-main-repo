@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
@@ -210,6 +211,10 @@ public void newlink(){
     TextView b2 = (TextView) bottomSheetView.findViewById(R.id.b2);
 
     ImageView i1 = (ImageView) bottomSheetView.findViewById(R.id.i1);
+    LinearLayout l1 = (LinearLayout) bottomSheetView.findViewById(R.id.messageback);
+    LinearLayout l2 = (LinearLayout) bottomSheetView.findViewById(R.id.aliasback);
+    setRoundedCorners(l1, "00000000", "dadcdf");
+    setRoundedCorners(l2, "00000000", "dadcdf");
 
     LinearLayout bg = (LinearLayout) bottomSheetView.findViewById(R.id.bg);
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -228,7 +233,7 @@ public void newlink(){
     t1.setText("Disconnected !");
     t2.setText("Sorry you can't connect to this project at this moment. please try again later.");
     b1.setText("Cancel");
-    b2.setText("Try again");
+    b2.setText("Short Url");
     _RoundAndBorder(i1, "#D50000", 0, "#D50000", 100);
     _rippleRoundStroke(bg, "#FFFFFF", "#000000", 15, 0, "#000000");
     _rippleRoundStroke(b1, "#FFFFFF", "#EEEEEE", 15, 2.5d, "#EEEEEE");
@@ -358,6 +363,32 @@ public void newlink(){
 
     public void _ICC(final ImageView _img, final String _c1, final String _c2) {
         _img.setImageTintList(new android.content.res.ColorStateList(new int[][] {{-android.R.attr.state_pressed},{android.R.attr.state_pressed}},new int[]{Color.parseColor(_c1), Color.parseColor(_c2)}));
+    }
+    private void setRoundedCorners(View linearLayout, String color, String scolor) {
+        // Create a new GradientDrawable
+        GradientDrawable gradientDrawable = new GradientDrawable();
+
+        // Set the shape to a rectangle
+        gradientDrawable.setShape(GradientDrawable.RECTANGLE);
+
+        // Set the corner radius (adjust as needed)
+        gradientDrawable.setCornerRadii(new float[]{20, 20, 20, 20, 20, 20, 20, 20});
+
+        // Set the background color (adjust as needed)
+        gradientDrawable.setColor(Color.parseColor("#" + color));
+
+        // Set the stroke (optional)
+        gradientDrawable.setStroke(4, Color.parseColor("#" + scolor));
+
+        // Set the gradient type (optional)
+        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+
+        // Set the orientation of the gradient (optional)
+        gradientDrawable.setOrientation(GradientDrawable.Orientation.LEFT_RIGHT);
+
+        // Set the background drawable for the LinearLayout
+        linearLayout.setBackground(gradientDrawable);
+        linearLayout.setElevation(5);
     }
 
 
