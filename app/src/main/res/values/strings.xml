@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Bulk Reply</string>
+    <string name="base_url">https://bulkreply.wapliaa.com/</string>
+    <string name="suburl">https://app.sabnode.com/apiv1/</string>
+    <string name="mail">iam.shakti150@gmail.com</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Welcome to BulkReply!</string>
+    <string name="slide_1_desc">A Whastapp Marketing Tool From Waplia Solutions.</string>
+
+    <string name="slide_2_title">Get Full Report</string>
+    <string name="slide_2_desc">Bulk Reply provides a full detailed reports of your Broadcasts, chatbots and autorespondes.</string>
+  <string name="slide_3_title">Get Realtime reports</string>
+    <string name="slide_3_desc">Get Realtime Message delivery reports.</string>
+</resources>

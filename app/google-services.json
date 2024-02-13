@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "702763829684",
+    "project_id": "bulkrepl",
+    "storage_bucket": "bulkrepl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:702763829684:android:67a8ac42fc4a0cead7cae1",
+        "android_client_info": {
+          "package_name": "com.waplia.watool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "702763829684-p9g3n39khn6n6lqi2oko2hge8vutvd95.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.waplia.watool",
+            "certificate_hash": "2927d3c4a47ccd878016ce048dd34f120206aef2"
+          }
+        },
+        {
+          "client_id": "702763829684-9at9hhir0t89sfovlfji9scr7f8lclhj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAafdHZ01bN2uIKOiK_9aCkiPEvxA9dOSI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "702763829684-9at9hhir0t89sfovlfji9scr7f8lclhj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

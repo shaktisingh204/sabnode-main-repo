@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <application
+    android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/Theme.MyApplication"
+        tools:targetApi="31" >
+        <activity android:name=".start"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".shortlink.linkdash"
+            android:exported="true"/>
+        <activity android:name=".shortlink.alllinks"
+            android:exported="true"/>
+        <activity android:name=".shortlink.newqr"
+            android:exported="true"/>
+        <activity android:name=".shortlink.qrshowweb"
+            android:exported="true"/>
+        <activity android:name=".ui.singin"
+            android:exported="true"/>
+        <activity android:name=".biolink.biodash"
+            android:exported="true"/>
+        <activity android:name=".biolink.biolinks"
+            android:exported="true"/>
+        <activity android:name=".biolink.customdomains"
+            android:exported="true"/>
+        <activity android:name=".ui.site"
+            android:exported="true"/>
+                <activity android:name=".ui.addsite"
+            android:exported="true"/>
+                <activity android:name=".scproof.socialdash"
+            android:exported="true"/>
+                <activity android:name=".scproof.newcamp"
+            android:exported="true"/>
+        <activity android:name=".ui.mobilelogin"
+            android:exported="true"/>
+        <activity android:name=".ui.signup"
+            android:exported="true"/>
+        <activity android:name=".ui.dashboard"
+            android:exported="true"/>
+        <activity android:name=".Home"
+            android:exported="true"/>
+  <activity android:name=".Login"
+            android:exported="true"/>
+        <activity android:name=".Main2Home"
+            android:exported="true"/>
+        <activity android:name=".profile"
+            android:resizeableActivity="true"
+            android:exported="true"/>
+        <activity android:name=".LinkGen"
+            android:exported="true"/>
+        <activity android:name=".contacts"
+            android:exported="true"/>
+        <activity android:name=".phonelist"
+            android:exported="true"/>
+   <activity android:name=".phonesearch"
+            android:exported="true"/>
+<activity android:name=".webview"
+            android:exported="true"/>
+        <activity android:name=".bulkmsg"
+            android:exported="true"/>
+        <activity android:name=".createbulk"
+            android:exported="true"/>
+        <activity android:name=".autoresponder"
+            android:exported="true"/>
+        <activity android:name=".chatbots"
+            android:exported="true"/>
+        <activity android:name=".chatbotsetting"
+            android:exported="true"/>
+        <activity android:name=".createchatbot"
+            android:exported="true"/>
+        <activity android:name=".aboutus"
+            android:exported="true"/>
+        <activity android:name=".resaleapp"
+            android:exported="true"/>
+        <activity android:name=".intro"
+            android:exported="true"/>
+        <activity android:name=".addphonenumbers"
+            android:exported="true"/>
+        <activity android:name=".Caption"
+            android:exported="true"/>
+        <activity android:name=".captioncreate"
+            android:exported="true"/>
+        <activity android:name=".mobilelogin"
+            android:exported="true"/>
+        <activity android:name=".loginmethods"
+            android:exported="true"/>
+        <activity android:name=".accountadd"
+            android:exported="true"/>
+        <activity android:name=".Account"
+            android:exported="true"/>
+        <activity android:name=".addphonenumber"
+            android:exported="true"/>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="my.package.with.myid.fileProvider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_path"/>
+        </provider>
+    </application>
+
+</manifest>

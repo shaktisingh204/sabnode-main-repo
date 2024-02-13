@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e9edf1">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:padding="4dp"
+                android:visibility="gone"
+                android:src="@drawable/ic_goal" />
+
+            <TextView
+                android:id="@+id/titletxt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/gpp"
+                android:gravity="center_vertical"
+                android:text="Create QR"
+                android:textColor="@color/carddark"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:gravity="center_horizontal|center_vertical">
+            <TextView
+                android:id="@+id/qrcodesname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/gpp"
+                android:gravity="center_vertical"
+                android:text="QR Code Name"
+                android:textColor="@color/carddark"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/nameback"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="@color/newedittext">
+
+                <EditText
+                    android:id="@+id/longurl"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@android:color/transparent"
+                    android:textColorHint="#717595"
+                    android:textColor="#3E4775"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:hint="e. g. For Instagram"
+                    android:textSize="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:padding="4dp"
+                    android:paddingStart="25dp"
+                    android:inputType="textEmailAddress"
+                    android:fontFamily="@font/gpp"/>
+
+            </LinearLayout>
+ <TextView
+                android:id="@+id/domainname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/gpp"
+                android:gravity="center_vertical"
+                android:text="Domain"
+                android:textColor="@color/carddark"
+                android:textSize="20dp"
+     android:visibility="gone"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/domainback"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:visibility="gone"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="@color/newedittext">
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:gravity="center_horizontal|center_vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/gpp"
+                        android:gravity="center_vertical"
+                        android:text="Static QR"
+                        android:textColor="@color/carddark"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        >
+                        <LinearLayout
+                            android:id="@+id/textline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:paddingStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:paddingEnd="10dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@color/newedittext">
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:scaleType="fitCenter"
+                                android:padding="5dp"
+                                android:src="@drawable/ic01"/>
+                            <TextView
+                                android:id="@+id/text"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/gpp"
+                                android:gravity="center_vertical"
+                                android:text="Text"
+                                android:textColor="@color/carddark"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/smsline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="10dp"
+                            android:layout_marginEnd="8dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@color/newedittext">
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+   android:scaleType="fitCenter"
+                                android:padding="5dp"                                android:src="@drawable/ic02"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/gpp"
+                                android:gravity="center_vertical"
+                                android:text="Sms &amp; Message"
+                                android:textColor="@color/carddark"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/wifiline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="10dp"
+                            android:layout_marginEnd="8dp"
+
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@color/newedittext">
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+   android:scaleType="fitCenter"
+                                android:padding="5dp"                                android:src="@drawable/ic03"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/gpp"
+                                android:gravity="center_vertical"
+                                android:text="Wifi"
+                                android:textColor="@color/carddark"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        >
+                        <LinearLayout
+                            android:id="@+id/staticline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:paddingStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:paddingEnd="10dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@color/newedittext">
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+   android:scaleType="fitCenter"
+                                android:padding="5dp"                                android:src="@drawable/ic04"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/gpp"
+                                android:gravity="center_vertical"
+                                android:text="Static vCard"
+                                android:textColor="@color/carddark"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/eventline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="10dp"
+                            android:layout_marginEnd="8dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@color/newedittext">
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+   android:scaleType="fitCenter"
+                                android:padding="5dp"                                android:src="@drawable/ic05"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/gpp"
+                                android:gravity="center_vertical"
+                                android:text="Event"
+                                android:textColor="@color/carddark"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/gpp"
+                        android:gravity="center_vertical"
+                        android:text="Dynamic QR"
+                        android:textColor="@color/carddark"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                    <HorizontalScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        >
+                        <LinearLayout
+                            android:id="@+id/linkline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:paddingStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:paddingEnd="10dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@color/newedittext">
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+   android:scaleType="fitCenter"
+                                android:padding="5dp"                                android:src="@drawable/ic06"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/gpp"
+                                android:gravity="center_vertical"
+                                android:text="Link"
+                                android:textColor="@color/carddark"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/emailline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="10dp"
+                            android:layout_marginEnd="8dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@color/newedittext">
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+   android:scaleType="fitCenter"
+                                android:padding="5dp"                                android:src="@drawable/ic07"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/gpp"
+                                android:gravity="center_vertical"
+                                android:text="Email"
+                                android:textColor="@color/carddark"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/phoneline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="10dp"
+                            android:layout_marginEnd="8dp"
+
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@color/newedittext">
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+   android:scaleType="fitCenter"
+                                android:padding="5dp"                                android:src="@drawable/ic08"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/gpp"
+                                android:gravity="center_vertical"
+                                android:text="Phone"
+                                android:textColor="@color/carddark"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/smsline1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="10dp"
+                            android:layout_marginEnd="8dp"
+
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@color/newedittext">
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+   android:scaleType="fitCenter"
+                                android:padding="5dp"                                android:src="@drawable/ic02"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/gpp"
+                                android:gravity="center_vertical"
+                                android:text="Sms"
+                                android:textColor="@color/carddark"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                    </HorizontalScrollView>
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        >
+                        <LinearLayout
+                            android:id="@+id/vcardline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:visibility="gone"
+                            android:paddingStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:paddingEnd="10dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@color/newedittext">
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+   android:scaleType="fitCenter"
+                                android:padding="5dp"                                android:src="@drawable/ic04"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/gpp"
+                                android:gravity="center_vertical"
+                                android:text="vCard"
+                                android:textColor="@color/carddark"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/application"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="10dp"
+                            android:layout_marginEnd="8dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@color/newedittext">
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+   android:scaleType="fitCenter"
+                                android:padding="5dp"                                android:src="@drawable/ic09"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/gpp"
+                                android:gravity="center_vertical"
+                                android:text="Application"
+                                android:textColor="@color/carddark"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/fileline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="10dp"
+                            android:layout_marginEnd="8dp"
+                            android:visibility="gone"
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@color/newedittext">
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+   android:scaleType="fitCenter"
+                                android:padding="5dp"                                android:src="@drawable/ic011"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/gpp"
+                                android:gravity="center_vertical"
+                                android:text="File"
+                                android:textColor="@color/carddark"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/waline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="10dp"
+                            android:layout_marginEnd="8dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@color/newedittext">
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:scaleType="fitCenter"
+                                android:padding="5dp"                                android:src="@drawable/ic013"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/gpp"
+                                android:gravity="center_vertical"
+                                android:text="Whatsapp"
+                                android:textColor="@color/carddark"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    </HorizontalScrollView>
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        >
+                        <LinearLayout
+                            android:visibility="gone"
+                            android:id="@+id/cryptoline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:paddingStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:paddingEnd="10dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@color/newedittext">
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+   android:scaleType="fitCenter"
+                                android:padding="5dp"                                android:src="@drawable/ic012"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/gpp"
+                                android:gravity="center_vertical"
+                                android:text="Cryptocurrency"
+                                android:textColor="@color/carddark"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                    </HorizontalScrollView>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="10dp">
+        <LinearLayout
+            android:id="@+id/textsline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:gravity="center_horizontal|center_vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal|center_vertical">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="fitCenter"
+                    android:padding="5dp"
+                    android:src="@drawable/ic01"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/gpp"
+                    android:gravity="center_vertical"
+                    android:text="Text"
+                    android:textColor="@color/carddark"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/textssback"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="@color/newedittext">
+
+                <EditText
+                    android:id="@+id/texttext"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@android:color/transparent"
+                    android:textColorHint="#717595"
+                    android:textColor="#3E4775"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:hint="Your Text"
+                    android:textSize="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:padding="4dp"
+                    android:paddingStart="25dp"
+                    android:inputType="textEmailAddress"
+                    android:fontFamily="@font/gpp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+            <include layout="@layout/newqr2"/>
+        </androidx.cardview.widget.CardView>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/create"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/md_green_900"
+                android:text="Create QR Code"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:rippleColor="@color/md_green_50"
+                style="@style/ThemeOverlay.Material3.Button.TextButton"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

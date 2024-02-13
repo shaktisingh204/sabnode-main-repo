@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:orientation="vertical"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="@color/Cardlight">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:gravity="center_vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/cnname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="test"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/gpp"
+                        android:textColor="@color/carddark"
+                        android:textSize="16sp"/>
+                    <TextView
+                        android:id="@+id/cdis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="google.com"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/gpp"
+                        android:textColor="@color/carddark"
+                        android:textSize="13sp"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/visitic"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:padding="8dp"
+                    android:src="@drawable/usersv" />
+                <TextView
+                    android:id="@+id/visitors"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:layout_margin="5dp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/gpp"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textColor="@color/carddark"
+                    android:textSize="16sp"/>
+
+
+                <ImageView
+                    android:id="@+id/menubar"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:padding="2dp"
+                    android:src="@drawable/img_18" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/goneline"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:padding="10dp"
+                android:gravity="right">
+
+                <ImageView
+                    android:id="@+id/status"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/chatbot1" />
+
+                <ImageView
+                    android:id="@+id/type"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:padding="8dp"
+                    android:src="@drawable/code" />
+
+                <ImageView
+                    android:id="@+id/sendto"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:padding="8dp"
+                    android:src="@drawable/pencil" />
+
+                <ImageView
+                    android:id="@+id/menu"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:padding="2dp"
+                    android:src="@drawable/img_22" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

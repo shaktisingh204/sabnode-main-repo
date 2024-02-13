@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/white"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:gravity="center_vertical|center_horizontal">
+        <!--   <androidx.cardview.widget.CardView
+               android:layout_width="match_parent"
+               android:layout_height="300dp"
+               android:gravity="center_horizontal|center_vertical"
+             android:layout_margin="10dp"
+               android:background="@color/Cardlight"
+               android:padding="10dp"
+               app:cardBackgroundColor="@color/white"
+               app:cardCornerRadius="10dp">-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical|center_horizontal">
+            <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            android:visibility="visible"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_horizontal|center_vertical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome! to BulkReply"
+                android:gravity="top"
+
+                android:fontFamily="@font/gpp"
+                android:textColor="#172f4a"
+                android:textSize="28dp"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign in, and Start your whatsapp marketing now."
+                android:gravity="center_vertical|center_horizontal"
+                android:fontFamily="@font/gpp"
+                android:textColor="#497695"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                />
+
+        <LinearLayout
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:background="@color/md_blue_A700"
+            android:layout_margin="10dp"
+            android:gravity="center_vertical|center_horizontal">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/emailic"
+                android:scaleType="fitCenter"
+                android:padding="2dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login with Email Address"
+                android:fontFamily="@font/gpp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_margin="5dp"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/phone"
+            android:layout_margin="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:background="@color/md_blue_A700"
+            android:gravity="center_vertical|center_horizontal">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/phoneic"
+                android:scaleType="fitCenter"
+                android:padding="2dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login with Phone Number"
+                android:fontFamily="@font/gpp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_margin="5dp"
+                />
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/gpp"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="Don't have an account? "
+                    android:textColor="#6184AA"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/gpp"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="Sign Up!"
+                    android:textColor="#0077f9"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+        <!--
+            </androidx.cardview.widget.CardView>
+        -->
+
+
+    </LinearLayout>
+</LinearLayout>

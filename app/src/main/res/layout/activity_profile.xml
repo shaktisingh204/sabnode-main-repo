@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/background_light"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="@color/Cardlight">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_7"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:textStyle="bold"
+                android:fontFamily="@font/gpp"
+                android:textColor="@color/carddark"
+                android:textSize="18sp"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profilecard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="vertical"
+        app:cardBackgroundColor="@color/Cardlight"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gpp"
+                        android:text="Select WhatsApp accounts"
+                        android:textColor="@color/carddark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/selectprofile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="4dp"
+                            android:src="@drawable/img_26" />
+
+                        <TextView
+                            android:id="@+id/profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gpp"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="Select a profile"
+                            android:textColor="@color/carddark"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+<LinearLayout
+    android:id="@+id/profileline"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    android:orientation="vertical">
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/Cardlight">
+        <ImageView
+            android:id="@+id/avtar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/logo"/>
+    </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_vertical|center_horizontal"
+           >
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Waplia"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="@color/carddark"
+                    android:fontFamily="@font/gpp"/>
+                <TextView
+                    android:id="@+id/pid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="917410907639@s.whatsapp.net"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textColor="@color/carddark"
+                    android:fontFamily="@font/gpp"/>
+            </LinearLayout>
+</LinearLayout>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp"
+    android:layout_gravity="center_vertical|center_horizontal"
+    app:cardBackgroundColor="@color/Cardlight">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:gravity="center_horizontal|center_vertical"
+        >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Instensce id"
+        android:textSize="18sp"
+        android:textColor="@color/carddark"
+        android:textStyle="bold"
+        android:fontFamily="@font/gpp"
+        android:layout_gravity="center_horizontal|center_vertical"/>
+    <TextView
+        android:id="@+id/instid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="df"
+        android:textSize="12sp"
+        android:textColor="@color/carddark"
+        android:textStyle="bold"
+        android:fontFamily="@font/gpp"
+        android:layout_gravity="center_horizontal|center_vertical"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+<androidx.cardview.widget.CardView
+    android:visibility="gone"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp"
+    android:layout_gravity="center_vertical|center_horizontal"
+    app:cardBackgroundColor="@color/Cardlight">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:gravity="center_horizontal|center_vertical"
+        >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Access Token"
+        android:textSize="18sp"
+        android:textColor="@color/carddark"
+        android:textStyle="bold"
+        android:fontFamily="@font/gpp"
+        android:layout_gravity="center_horizontal|center_vertical"/>
+    <TextView
+        android:id="@+id/token"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="dfed"
+        android:textSize="12sp"
+        android:textColor="@color/carddark"
+        android:textStyle="bold"
+        android:fontFamily="@font/gpp"
+        android:layout_gravity="center_horizontal|center_vertical"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+</LinearLayout>
+</LinearLayout>
