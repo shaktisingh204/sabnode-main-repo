@@ -38,6 +38,22 @@
 				android:padding="8dp"
 				android:background="#D50000"
 				android:orientation="horizontal" />
+			<com.google.android.material.textfield.TextInputLayout
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:layout_margin="8dp"
+				app:hintTextColor="@color/md_red_A700"
+				app:boxStrokeColor="#D50000">
+				<EditText
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:hint="Enter Long Url"
+					android:textColorHint="@color/md_red_A700"
+					android:textColor="@color/md_red_A700"
+					android:background="@color/white"
+					android:textStyle="bold"/>
+
+			</com.google.android.material.textfield.TextInputLayout>
 			<TextView
 				android:id="@+id/t1"
 				android:focusable="false"
