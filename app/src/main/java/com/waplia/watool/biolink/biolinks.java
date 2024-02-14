@@ -7,6 +7,7 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.media.Image;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -38,8 +40,17 @@ import com.waplia.watool.RequestNetworkController;
 import com.waplia.watool.SketchwareUtil;
 import com.waplia.watool.shortlink.linkdash;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class biolinks extends AppCompatActivity {
     private RecyclerView biolinklist;
@@ -49,7 +60,7 @@ public class biolinks extends AppCompatActivity {
     private HashMap<String, Object> rqmap = new HashMap<>();
     private KProgressHUD mProgressHUD;
     private TextView titletxt;
-    private String fontName;
+    private String fontName, newlongurl;
     private ImageView newlink;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -212,6 +223,7 @@ public void newlink(){
     ImageView i1 = (ImageView) bottomSheetView.findViewById(R.id.i1);
     LinearLayout l1 = (LinearLayout) bottomSheetView.findViewById(R.id.messageback);
     LinearLayout l2 = (LinearLayout) bottomSheetView.findViewById(R.id.aliasback);
+    EditText longurl = (EditText) bottomSheetView.findViewById(R.id.messagetext);
     setRoundedCorners(l1, "00000000", "dadcdf");
     setRoundedCorners(l2, "00000000", "dadcdf");
 
@@ -245,6 +257,9 @@ public void newlink(){
     }
     });
     b2.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+        newlongurl = longurl.getText().toString();
+        new biolinks.NetworkRequestTask().execute();
+
         SketchwareUtil.showMessage(getApplicationContext(), "button2 Press");
     }
     });
@@ -389,6 +404,92 @@ public void newlink(){
         linearLayout.setBackground(gradientDrawable);
         linearLayout.setElevation(5);
     }
+    private boolean isValidURL(String url) {
+        // Implement your URL validation logic here
+        // Return true if the URL is valid, false otherwise
+        return true; // Replace with your validation logic
+    }
+    private class NetworkRequestTask extends AsyncTask<Void, Void, biolinks.NetworkResponse> {
 
+        @Override
+        protected biolinks.NetworkResponse doInBackground(Void... voids) {
+            try {
+                OkHttpClient client = new OkHttpClient().newBuilder().build();
+
+                MediaType mediaType = MediaType.parse("application/json");
+                Map<String, String> rqmap3 = new HashMap<>();
+                RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                        .addFormDataPart("url",newlongurl)
+                        .addFormDataPart("location_url","https://biolink.sabnode.com/")
+                        .build();
+                Request request = new Request.Builder()
+                        .url("https://biolink.sabnode.com/api/links")
+                        .method("POST", body)
+                        .addHeader("Authorization", "Bearer dbb0fc75ba9f33be66e69a408f609838")
+                        .addHeader("Content-Type", "application/json")
+                        .build();
+
+                // Check if the URL is valid before making the network request
+                String urlToValidate = newlongurl;
+                if (isValidURL(urlToValidate)) {
+                    return executeNetworkRequest(client, request);
+                } else {
+                    // Return an indication that the URL is invalid
+                    return new biolinks.NetworkResponse(false, "Invalid URL");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new biolinks.NetworkResponse(false, "Error");
+            }
+        }
+
+        @Override
+        protected void onPostExecute(biolinks.NetworkResponse result) {
+            if (result != null) {
+                Log.d("Response", result.getResponse());
+                // Handle the result based on the returned NetworkResponse object
+                if (result.isSuccess()) {
+                    mProgressHUD.dismiss();
+                   Toast.makeText(biolinks.this, "Request successful: " + result.getResponse(), Toast.LENGTH_SHORT).show();
+                } else {
+                    mProgressHUD.dismiss();
+                    Toast.makeText(biolinks.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+        private biolinks.NetworkResponse executeNetworkRequest(OkHttpClient client, Request request) {
+            try (Response response = client.newCall(request).execute()) {
+                if (response.isSuccessful()) {
+                    // Convert the response body to a string
+                    String responseBody = response.body().string();
+                    return new biolinks.NetworkResponse(true, responseBody);
+                } else {
+                    return new biolinks.NetworkResponse(false, "Request failed: " + response.code());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return new biolinks.NetworkResponse(false, "Error");
+            }
+        }
+    }
+
+    private class NetworkResponse {
+        private boolean success;
+        private String response;
+
+        public NetworkResponse(boolean success, String response) {
+            this.success = success;
+            this.response = response;
+        }
+
+        public boolean isSuccess() {
+            return success;
+        }
+
+        public String getResponse() {
+            return response;
+        }
+    }
 
 }
