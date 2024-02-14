@@ -17,7 +17,7 @@ import com.waplia.watool.R;
 
 public class bshortlinkedit extends AppCompatActivity  {
     private LinearLayout phoneback, messageback, pixels, tempurl, password, targate, advanced;
-    private ImageView linkic, pixelic;
+    private ImageView linkic, pixelic, tempic, passwordic, targateic, advancedic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +40,16 @@ public class bshortlinkedit extends AppCompatActivity  {
         pixels = findViewById(R.id.pixels);
         linkic = findViewById(R.id.linkic);
         pixelic = findViewById(R.id.pixelic);
+        tempic = findViewById(R.id.tempic);
+        passwordic = findViewById(R.id.passwordic);
+        targateic = findViewById(R.id.targateic);
+        advancedic = findViewById(R.id.advancedic);
         linkic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
         pixelic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
+        tempic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
+        passwordic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
+        targateic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
+        advancedic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
         setRoundedCorners(phoneback, "00000000", "dadcdf");
         setRoundedCorners(messageback, "00000000", "dadcdf");
         setRoundedCorners(pixels, "00000000", "dadcdf");
