@@ -201,7 +201,6 @@ public void newlink(){
     View bottomSheetView; bottomSheetView = getLayoutInflater().inflate(R.layout.bottom_sheet_p5,null );
     bottomSheetDialog.setContentView(bottomSheetView);
 
-    bottomSheetDialog.getWindow().findViewById(R.id.bottom_sheet).setBackgroundResource(android.R.color.transparent);
     TextView t1 = (TextView) bottomSheetView.findViewById(R.id.t1);
 
     TextView t2 = (TextView) bottomSheetView.findViewById(R.id.t2);
