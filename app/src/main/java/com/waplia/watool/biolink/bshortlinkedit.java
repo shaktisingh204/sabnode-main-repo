@@ -53,7 +53,7 @@ public class bshortlinkedit extends AppCompatActivity  {
     ArrayList<HashMap<String, Object>> list1 = new ArrayList<>();
     private Switch scheduleswitch, senseswitch;
     private LinearLayout scheduleline;
-    private  String schedule, sense ;
+    private  String schedule, sense, starts, stops ;
 
 
     @Override
@@ -411,8 +411,12 @@ scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeList
 
                 if(scheduleswitch.isChecked()){
                     schedule = "true"; //schedule
+                    starts = "(schedule=true)";
+                    stops = "(schedule=true)";
                 }else if(!scheduleswitch.isChecked()){
                     schedule = "false"; //schedule
+                    starts = "(schedule=false)";
+                    stops = "(schedule=false)";
                 }
                 if (senseswitch.isChecked()){
                     sense = "true";
@@ -420,11 +424,12 @@ scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeList
                     sense = "false"; //sense
 
                 }
+
                 RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
                         .addFormDataPart("location_url",phonetext.getText().toString())
                         .addFormDataPart("schedule",schedule)
-                        .addFormDataPart("start_date",start.getText().toString())
-                        .addFormDataPart("end_date",end.getText().toString())
+                        .addFormDataPart("start_date",starts)
+                        .addFormDataPart("end_date",stops)
                         .addFormDataPart("clicks_limit",clicks.getText().toString())
                         .addFormDataPart("expiration_url",expire.getText().toString())
                         .addFormDataPart("sensitive_content", sense)
