@@ -170,6 +170,7 @@ public class biolinks extends AppCompatActivity {
         @Override
         public void onBindViewHolder(biolinks.Recyclerview1Adapter.ViewHolder _holder, final int _position) {
             View _view = _holder.itemView;
+            final LinearLayout mainline = (LinearLayout) _view.findViewById(R.id.mainline);
            final TextView name = _view.findViewById(R.id.name);
            final TextView url = _view.findViewById(R.id.url);
            final TextView clicks = _view.findViewById(R.id.clicks);
@@ -188,8 +189,17 @@ public class biolinks extends AppCompatActivity {
             if (_data.get(_position).containsKey("url")){
            if (_data.get(_position).get("type").toString().equals("biolink")){
                 icon.setImageDrawable(getDrawable(R.drawable.bio));
+
            } else if (_data.get(_position).get("type").toString().equals("link")){
                icon.setImageDrawable(getDrawable(R.drawable.link));
+               mainline.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       Intent intent = new Intent(biolinks.this, bshortlinkedit.class);
+                       intent.putExtra("id", _data.get(_position).get("link_id").toString());
+                       startActivity(intent);
+                   }
+               });
            }else if (_data.get(_position).get("type").toString().equals("file")){
                icon.setImageDrawable(getDrawable(R.drawable.file));
            }else if (_data.get(_position).get("type").toString().equals("vcard")){
@@ -198,6 +208,7 @@ public class biolinks extends AppCompatActivity {
                 icon.setImageDrawable(getDrawable(R.drawable.qrcode));
                 clicks.setTextColor(getColor(R.color.md_light_green_900));
             }
+
         }
         @Override
         public int getItemCount() {

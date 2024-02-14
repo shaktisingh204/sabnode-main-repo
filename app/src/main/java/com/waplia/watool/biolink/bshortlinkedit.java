@@ -11,8 +11,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +28,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,9 +44,14 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class bshortlinkedit extends AppCompatActivity  {
-    private LinearLayout phoneback, messageback, pixels, tempurl, password, targate, advanced;
+    private LinearLayout phoneback, messageback, pixels, tempurl, password, targate, advanced,
+            clicksback, startback, endback, tempurlline, expireback, tempurls, passwordback, protectionline, protections;
     private ImageView linkic, pixelic, tempic, passwordic, targateic, advancedic;
+    private TextView text;
+    private EditText messagetext, phonetext, start, end;
     ArrayList<HashMap<String, Object>> list1 = new ArrayList<>();
+    private Switch scheduleswitch;
+    private LinearLayout scheduleline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +66,7 @@ public class bshortlinkedit extends AppCompatActivity  {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         getSupportActionBar().hide();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        tempurlline = findViewById(R.id.tempurlline);
         phoneback = findViewById(R.id.phonesback);
         messageback = findViewById(R.id.messageback);
         tempurl = findViewById(R.id.tempurl);
@@ -67,6 +80,20 @@ public class bshortlinkedit extends AppCompatActivity  {
         passwordic = findViewById(R.id.passwordic);
         targateic = findViewById(R.id.targateic);
         advancedic = findViewById(R.id.advancedic);
+        text = findViewById(R.id.text);
+        messagetext = findViewById(R.id.messagetext);
+        phonetext = findViewById(R.id.phonetext);
+        clicksback = findViewById(R.id.clicksback);
+        startback = findViewById(R.id.startback);
+        endback = findViewById(R.id.endback);
+        start = findViewById(R.id.start);
+        end = findViewById(R.id.end);
+        expireback = findViewById(R.id.expireback);
+        scheduleswitch = findViewById(R.id.scheduleswitch);
+        scheduleline = findViewById(R.id.scheduleline);
+        passwordback = findViewById(R.id.passwordback);
+        protectionline = findViewById(R.id.protectionline);
+        protections = findViewById(R.id.protections);
         linkic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
         pixelic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
         tempic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
@@ -80,8 +107,54 @@ public class bshortlinkedit extends AppCompatActivity  {
         setRoundedCorners(password, "00000000", "dadcdf");
         setRoundedCorners(targate, "00000000", "dadcdf");
         setRoundedCorners(advanced, "00000000", "dadcdf");
-        new bshortlinkedit.NetworkRequestTask().execute();
+        setRoundedCorners(clicksback, "00000000", "dadcdf");
+        setRoundedCorners(startback, "00000000", "dadcdf");
+        setRoundedCorners(endback, "00000000", "dadcdf");
+        setRoundedCorners(expireback, "00000000", "dadcdf");
+        setRoundedCorners(passwordback, "00000000", "dadcdf");
 
+        new bshortlinkedit.NetworkRequestTask().execute();
+        tempurls = findViewById(R.id.tempurls);
+        tempurls.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (tempurlline.getVisibility() == View.VISIBLE) {
+                    tempurlline.setVisibility(View.GONE);
+
+                } else {
+                    tempurlline.setVisibility(View.VISIBLE);
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+                    // Get the current date and time
+                    Date currentDate = new Date();
+
+                    // Format the current date and time using the SimpleDateFormat
+                    String formattedDateTime = dateFormat.format(currentDate);
+                    start.setText(formattedDateTime);
+                    end.setText(formattedDateTime);
+                }
+            }
+        });
+        protections.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (protectionline.getVisibility() == View.VISIBLE) {
+                    protectionline.setVisibility(View.GONE);
+                } else {
+                    protectionline.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked) {
+            scheduleline.setVisibility(View.VISIBLE);
+        } else {
+            scheduleline.setVisibility(View.GONE);
+        }
+    }
+});
     }
     private void setRoundedCorners(View linearLayout, String color, String scolor) {
         // Create a new GradientDrawable
@@ -130,9 +203,7 @@ public class bshortlinkedit extends AppCompatActivity  {
                         .addHeader("Authorization", "Bearer dbb0fc75ba9f33be66e69a408f609838")
                         .addHeader("Content-Type", "application/json")
                         .build();
-
-                // Check if the URL is valid before making the network request
-                return executeNetworkRequest(client, request);
+                    return executeNetworkRequest(client, request);
             } catch (Exception e) {
                 e.printStackTrace();
                 return new bshortlinkedit.NetworkResponse(false, "Error");
@@ -178,17 +249,21 @@ public class bshortlinkedit extends AppCompatActivity  {
                         map.put("sensitive_content", settingsObject.getBoolean("sensitive_content"));
                         map.put("targeting_type", settingsObject.getString("targeting_type"));
                         // Get the "pixels_ids" JSON array and convert it to a List
+                        try {
                         JSONArray pixelsIdsArray = dataObject.getJSONArray("pixels_ids");
                         List<Integer> pixelsIdsList = new ArrayList<>();
                         for (int i = 0; i < pixelsIdsArray.length(); i++) {
                             pixelsIdsList.add(pixelsIdsArray.getInt(i));
                         }
-                        map.put("pixels_ids", pixelsIdsList);
-
+                        } catch (Exception e) {
+                            map.put("pixels_ids", "0");
+                        }
                         // Add the HashMap to the ArrayList
                         ArrayList<HashMap<String, Object>> list1 = new ArrayList<>();
                         list1.add(map);
-
+                        text.setText(list1.get(0).get("url").toString());
+                        phonetext.setText(list1.get(0).get("location_url").toString());
+                        messagetext.setText(list1.get(0).get("url").toString());
                         // Print the result
                         System.out.println(list1);
                     } catch (JSONException e) {

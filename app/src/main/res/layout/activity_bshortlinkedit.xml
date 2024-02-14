@@ -7,6 +7,14 @@
     android:layout_width="match_parent"
 android:padding="8dp"
     android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
     <LinearLayout
         android:visibility="visible"
         android:id="@+id/smssline"
@@ -171,11 +179,17 @@ android:padding="8dp"
         <LinearLayout
             android:id="@+id/tempurl"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_margin="10dp"
             android:gravity="center_horizontal|center_vertical"
             android:background="@color/newedittext">
+        <LinearLayout
+            android:id="@+id/tempurls"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal|center_vertical">
 
             <ImageView
                 android:id="@+id/tempic"
@@ -199,14 +213,23 @@ android:padding="8dp"
                 android:inputType="textEmailAddress"
                 android:fontFamily="@font/gpp"/>
         </LinearLayout>
+            <include layout="@layout/tempurl"  />
+        </LinearLayout>
         <LinearLayout
             android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_margin="10dp"
             android:gravity="center_horizontal|center_vertical"
             android:background="@color/newedittext">
+            <LinearLayout
+                android:id="@+id/protections"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal|center_vertical">
+
             <ImageView
                 android:id="@+id/passwordic"
                 android:layout_width="25dp"
@@ -228,6 +251,8 @@ android:padding="8dp"
                 android:padding="4dp"
                 android:inputType="textEmailAddress"
                 android:fontFamily="@font/gpp"/>
+        </LinearLayout>
+            <include layout="@layout/protection"  />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/targate"
@@ -291,4 +316,7 @@ android:padding="8dp"
                 android:fontFamily="@font/gpp"/>
         </LinearLayout>
     </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>
