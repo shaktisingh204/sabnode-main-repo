@@ -61,7 +61,7 @@ public class biolinks extends AppCompatActivity {
     private HashMap<String, Object> rqmap = new HashMap<>();
     private KProgressHUD mProgressHUD;
     private TextView titletxt;
-    private String fontName, newlongurl;
+    private String fontName, newlongurl, newalias;
     private ImageView newlink;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,9 +82,9 @@ public class biolinks extends AppCompatActivity {
         newlink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // newlink();
-                Intent intent = new Intent(biolinks.this, bshortlinkedit.class);
-                startActivity(intent);
+               newlink();
+                /*Intent intent = new Intent(biolinks.this, bshortlinkedit.class);
+                startActivity(intent);*/
             }
         }
         );
@@ -227,6 +227,7 @@ public void newlink(){
     LinearLayout l1 = (LinearLayout) bottomSheetView.findViewById(R.id.messageback);
     LinearLayout l2 = (LinearLayout) bottomSheetView.findViewById(R.id.aliasback);
     EditText longurl = (EditText) bottomSheetView.findViewById(R.id.messagetext);
+    EditText alias = (EditText) bottomSheetView.findViewById(R.id.alias);
     setRoundedCorners(l1, "00000000", "dadcdf");
     setRoundedCorners(l2, "00000000", "dadcdf");
 
@@ -261,6 +262,7 @@ public void newlink(){
     });
     b2.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
         newlongurl = longurl.getText().toString();
+        newalias = alias.getText().toString();
         new biolinks.NetworkRequestTask().execute();
 
         SketchwareUtil.showMessage(getApplicationContext(), "button2 Press");
@@ -422,8 +424,8 @@ public void newlink(){
                 MediaType mediaType = MediaType.parse("application/json");
                 Map<String, String> rqmap3 = new HashMap<>();
                 RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
-                        .addFormDataPart("url",newlongurl)
-                        .addFormDataPart("location_url","https://biolink.sabnode.com/")
+                        .addFormDataPart("url",newalias)
+                        .addFormDataPart("location_url",newlongurl)
                         .build();
                 Request request = new Request.Builder()
                         .url("https://biolink.sabnode.com/api/links")
@@ -453,6 +455,9 @@ public void newlink(){
                 // Handle the result based on the returned NetworkResponse object
                 if (result.isSuccess()) {
                     mProgressHUD.dismiss();
+                    Intent intent = new Intent(biolinks.this, bshortlinkedit.class);
+                    intent.putExtra("id", result.getResponse().replace("{\"data\":{\"id\":","").replace("}}", ""));
+                    startActivity(intent);
                    Toast.makeText(biolinks.this, "Request successful: " + result.getResponse(), Toast.LENGTH_SHORT).show();
                 } else {
                     mProgressHUD.dismiss();
