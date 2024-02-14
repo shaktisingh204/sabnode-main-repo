@@ -44,9 +44,10 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class bshortlinkedit extends AppCompatActivity  {
-    private LinearLayout phoneback, messageback, pixels, tempurl, password, targate, advanced,
-            clicksback, startback, endback, tempurlline, expireback, tempurls, passwordback, protectionline, protections;
-    private ImageView linkic, pixelic, tempic, passwordic, targateic, advancedic;
+    private LinearLayout phoneback, messageback, pixels, tempurl, password, targate, advanced,targateclick,
+            clicksback, startback, endback, tempurlline, expireback, tempurls, passwordback, protectionline, protections,
+            typeback, targating, advanceback, advancedsettings, advanceclicks;
+    private ImageView linkic, pixelic, tempic, passwordic, targateic, advancedic, chooseic, chooseica;
     private TextView text;
     private EditText messagetext, phonetext, start, end;
     ArrayList<HashMap<String, Object>> list1 = new ArrayList<>();
@@ -94,10 +95,20 @@ public class bshortlinkedit extends AppCompatActivity  {
         passwordback = findViewById(R.id.passwordback);
         protectionline = findViewById(R.id.protectionline);
         protections = findViewById(R.id.protections);
+        targateclick = findViewById(R.id.targateclick);
+        typeback = findViewById(R.id.typeback);
+        targating = findViewById(R.id.targating);
+        chooseic = findViewById(R.id.chooseic);
+        advanceback = findViewById(R.id.advanceback);
+        advancedsettings = findViewById(R.id.advancedsettings);
+        advanceclicks = findViewById(R.id.advanceclicks);
+        chooseica = findViewById(R.id.chooseica);
         linkic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
+        chooseic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
         pixelic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
         tempic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
         passwordic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
+        chooseica.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
         targateic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
         advancedic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
         setRoundedCorners(phoneback, "00000000", "dadcdf");
@@ -112,7 +123,8 @@ public class bshortlinkedit extends AppCompatActivity  {
         setRoundedCorners(endback, "00000000", "dadcdf");
         setRoundedCorners(expireback, "00000000", "dadcdf");
         setRoundedCorners(passwordback, "00000000", "dadcdf");
-
+        setRoundedCorners(typeback, "00000000", "dadcdf");
+        setRoundedCorners(advanceback, "00000000", "dadcdf");
         new bshortlinkedit.NetworkRequestTask().execute();
         tempurls = findViewById(R.id.tempurls);
         tempurls.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +154,26 @@ public class bshortlinkedit extends AppCompatActivity  {
                     protectionline.setVisibility(View.GONE);
                 } else {
                     protectionline.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        targateclick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (targating.getVisibility() == View.VISIBLE) {
+                    targating.setVisibility(View.GONE);
+                } else {
+                    targating.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        advanceclicks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (advancedsettings.getVisibility() == View.VISIBLE) {
+                    advancedsettings.setVisibility(View.GONE);
+                } else {
+                    advancedsettings.setVisibility(View.VISIBLE);
                 }
             }
         });

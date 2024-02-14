@@ -257,11 +257,17 @@ android:padding="8dp"
         <LinearLayout
             android:id="@+id/targate"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_margin="10dp"
             android:gravity="center_horizontal|center_vertical"
             android:background="@color/newedittext">
+            <LinearLayout
+                android:id="@+id/targateclick"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal|center_vertical">
 
             <ImageView
                 android:id="@+id/targateic"
@@ -284,15 +290,24 @@ android:padding="8dp"
                 android:padding="4dp"
                 android:inputType="textEmailAddress"
                 android:fontFamily="@font/gpp"/>
+            </LinearLayout>
+            <include layout="@layout/targating"  />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/advanced"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_margin="10dp"
             android:gravity="center_horizontal|center_vertical"
             android:background="@color/newedittext">
+            <LinearLayout
+                android:id="@+id/advanceclicks"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal|center_vertical">
+
             <ImageView
                 android:id="@+id/advancedic"
                 android:layout_width="25dp"
@@ -314,6 +329,8 @@ android:padding="8dp"
                 android:padding="4dp"
                 android:inputType="textEmailAddress"
                 android:fontFamily="@font/gpp"/>
+            </LinearLayout>
+            <include layout="@layout/advanced"  />
         </LinearLayout>
     </LinearLayout>
 

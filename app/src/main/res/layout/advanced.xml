@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/advancedsettings"
+    android:visibility="gone"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gpp"
+            android:gravity="center_vertical"
+            android:text="Project"
+            android:textColor="@color/carddark"
+            android:textSize="14dp"
+            />
+        <LinearLayout
+            android:id="@+id/advanceback"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="4dp"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal|center_vertical"
+            android:background="@color/newedittext">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="None"
+                android:background="@android:color/transparent"
+                android:textColor="#3E4775"
+                android:textStyle="bold"
+                android:textSize="18dp"
+
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_gravity="center_vertical"
+                android:padding="4dp"
+                android:inputType="textEmailAddress"
+                android:fontFamily="@font/gpp"/>
+            <ImageView
+                android:id="@+id/chooseica"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/sort"
+                android:padding="7dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
