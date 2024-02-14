@@ -345,9 +345,9 @@ scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeList
                         clicks.setText(list1.get(0).get("clicks_limit").toString());
                         expire.setText(list1.get(0).get("expiration_url").toString());
                         passwordtext.setText(list1.get(0).get("password").toString());
-                        if (list1.get(0).get("start_date").toString().equals("")){
+                        if (!list1.get(0).get("start_date").toString().equals(" ")){
                             scheduleswitch.setChecked(true);
-                        }else if (list1.get(0).get("start_date").toString().equals("")){
+                        }else if (list1.get(0).get("start_date").toString().equals(" ")){
                             scheduleswitch.setChecked(false);
                         }
                         if (list1.get(0).get("sensitive_content").toString().equals("true")){
@@ -411,12 +411,12 @@ scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeList
 
                 if(scheduleswitch.isChecked()){
                     schedule = "true"; //schedule
-                    starts = "(schedule=true)";
-                    stops = "(schedule=true)";
+                    starts = start.getText().toString();
+                    stops = end.getText().toString();
                 }else if(!scheduleswitch.isChecked()){
                     schedule = "false"; //schedule
-                    starts = "(schedule=false)";
-                    stops = "(schedule=false)";
+                    starts = "null";
+                    stops = "null";
                 }
                 if (senseswitch.isChecked()){
                     sense = "true";
@@ -426,6 +426,7 @@ scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeList
                 }
 
                 RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                        .addFormDataPart("url",text.getText().toString())
                         .addFormDataPart("location_url",phonetext.getText().toString())
                         .addFormDataPart("schedule",schedule)
                         .addFormDataPart("start_date",starts)
