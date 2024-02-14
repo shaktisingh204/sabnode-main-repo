@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.waplia.watool.R;
 
 public class bshortlinkedit extends AppCompatActivity  {
-    private LinearLayout phoneback, messageback, pixels;
+    private LinearLayout phoneback, messageback, pixels, tempurl, password, targate, advanced;
     private ImageView linkic, pixelic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,10 @@ public class bshortlinkedit extends AppCompatActivity  {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         phoneback = findViewById(R.id.phonesback);
         messageback = findViewById(R.id.messageback);
+        tempurl = findViewById(R.id.tempurl);
+        password = findViewById(R.id.password);
+        targate = findViewById(R.id.targate);
+        advanced = findViewById(R.id.advanced);
         pixels = findViewById(R.id.pixels);
         linkic = findViewById(R.id.linkic);
         pixelic = findViewById(R.id.pixelic);
@@ -41,7 +45,10 @@ public class bshortlinkedit extends AppCompatActivity  {
         setRoundedCorners(phoneback, "00000000", "dadcdf");
         setRoundedCorners(messageback, "00000000", "dadcdf");
         setRoundedCorners(pixels, "00000000", "dadcdf");
-
+        setRoundedCorners(tempurl, "00000000", "dadcdf");
+        setRoundedCorners(password, "00000000", "dadcdf");
+        setRoundedCorners(targate, "00000000", "dadcdf");
+        setRoundedCorners(advanced, "00000000", "dadcdf");
 
     }
     private void setRoundedCorners(View linearLayout, String color, String scolor) {

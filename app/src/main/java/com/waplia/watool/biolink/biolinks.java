@@ -1,6 +1,7 @@
 package com.waplia.watool.biolink;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -81,7 +82,9 @@ public class biolinks extends AppCompatActivity {
         newlink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newlink();
+               // newlink();
+                Intent intent = new Intent(biolinks.this, bshortlinkedit.class);
+                startActivity(intent);
             }
         }
         );

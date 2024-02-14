@@ -41,6 +41,8 @@
             android:exported="true"/>
         <activity android:name=".biolink.biolinks"
             android:exported="true"/>
+        <activity android:name=".biolink.bshortlinkedit"
+            android:exported="true"/>
         <activity android:name=".biolink.customdomains"
             android:exported="true"/>
         <activity android:name=".ui.site"

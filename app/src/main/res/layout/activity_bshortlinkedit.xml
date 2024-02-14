@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@color/white"
     android:layout_width="match_parent"
-
+android:padding="8dp"
     android:layout_height="match_parent">
     <LinearLayout
         android:visibility="visible"
@@ -14,10 +15,12 @@
         android:orientation="vertical"
         android:padding="10dp"
         android:gravity="center_horizontal|center_vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal"
+
             android:gravity="center_horizontal|center_vertical">
             <ImageView
                 android:id="@+id/linkic"
@@ -52,6 +55,7 @@
             android:id="@+id/phonesback"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:padding="4dp"
             android:orientation="horizontal"
             android:gravity="center_horizontal|center_vertical"
             android:background="@color/newedittext">
@@ -100,6 +104,7 @@
     android:textStyle="bold"
     android:gravity="center_vertical"
     android:textSize="14dp"
+    android:layout_marginStart="8dp"
     android:text="biolink.sabnode.com/"
     android:layout_gravity="center_vertical"
     android:padding="4dp"
@@ -153,6 +158,126 @@
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
                 android:text="pixels"
+                android:background="@android:color/transparent"
+                android:textColor="#3E4775"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:padding="4dp"
+                android:inputType="textEmailAddress"
+                android:fontFamily="@font/gpp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/tempurl"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:background="@color/newedittext">
+            <ImageView
+                android:id="@+id/tempic"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:scaleType="fitCenter"
+                android:padding="5dp"
+                android:src="@drawable/pixelic"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:text="Temporary URL"
+                android:background="@android:color/transparent"
+                android:textColor="#3E4775"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:padding="4dp"
+                android:inputType="textEmailAddress"
+                android:fontFamily="@font/gpp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:background="@color/newedittext">
+            <ImageView
+                android:id="@+id/passwordic"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:scaleType="fitCenter"
+                android:padding="5dp"
+                android:src="@drawable/pixelic"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:text="Protection"
+                android:background="@android:color/transparent"
+                android:textColor="#3E4775"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:padding="4dp"
+                android:inputType="textEmailAddress"
+                android:fontFamily="@font/gpp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/targate"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:background="@color/newedittext">
+            <ImageView
+                android:id="@+id/targateic"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:scaleType="fitCenter"
+                android:padding="5dp"
+                android:src="@drawable/pixelic"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:text="Targeting"
+                android:background="@android:color/transparent"
+                android:textColor="#3E4775"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:padding="4dp"
+                android:inputType="textEmailAddress"
+                android:fontFamily="@font/gpp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/advanced"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:background="@color/newedittext">
+            <ImageView
+                android:id="@+id/advancedic"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:scaleType="fitCenter"
+                android:padding="5dp"
+                android:src="@drawable/pixelic"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:text="Advanced"
                 android:background="@android:color/transparent"
                 android:textColor="#3E4775"
                 android:textStyle="bold"
