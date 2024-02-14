@@ -48,11 +48,13 @@ public class bshortlinkedit extends AppCompatActivity  {
             clicksback, startback, endback, tempurlline, expireback, tempurls, passwordback, protectionline, protections,
             typeback, targating, advanceback, advancedsettings, advanceclicks;
     private ImageView linkic, pixelic, tempic, passwordic, targateic, advancedic, chooseic, chooseica;
-    private TextView text;
-    private EditText messagetext, phonetext, start, end;
+    private TextView text, update;
+    private EditText messagetext, phonetext, start, end, clicks, expire, passwordtext;
     ArrayList<HashMap<String, Object>> list1 = new ArrayList<>();
-    private Switch scheduleswitch;
+    private Switch scheduleswitch, senseswitch;
     private LinearLayout scheduleline;
+    private  String schedule, sense ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +105,11 @@ public class bshortlinkedit extends AppCompatActivity  {
         advancedsettings = findViewById(R.id.advancedsettings);
         advanceclicks = findViewById(R.id.advanceclicks);
         chooseica = findViewById(R.id.chooseica);
+        clicks = findViewById(R.id.clicks);
+        expire = findViewById(R.id.expire);
+        update = findViewById(R.id.update);
+        senseswitch = findViewById(R.id.senseswitch);
+        passwordtext = findViewById(R.id.passwordtext);
         linkic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
         chooseic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
         pixelic.setColorFilter(Color.parseColor("#3E4775"), PorterDuff.Mode.MULTIPLY);
@@ -114,6 +121,7 @@ public class bshortlinkedit extends AppCompatActivity  {
         setRoundedCorners(phoneback, "00000000", "dadcdf");
         setRoundedCorners(messageback, "00000000", "dadcdf");
         setRoundedCorners(pixels, "00000000", "dadcdf");
+        setRoundedCorners(update, "6200EA", "dadcdf");
         setRoundedCorners(tempurl, "00000000", "dadcdf");
         setRoundedCorners(password, "00000000", "dadcdf");
         setRoundedCorners(targate, "00000000", "dadcdf");
@@ -125,6 +133,15 @@ public class bshortlinkedit extends AppCompatActivity  {
         setRoundedCorners(passwordback, "00000000", "dadcdf");
         setRoundedCorners(typeback, "00000000", "dadcdf");
         setRoundedCorners(advanceback, "00000000", "dadcdf");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        // Get the current date and time
+        Date currentDate = new Date();
+
+        // Format the current date and time using the SimpleDateFormat
+        String formattedDateTime = dateFormat.format(currentDate);
+        start.setText(formattedDateTime);
+        end.setText(formattedDateTime);
         new bshortlinkedit.NetworkRequestTask().execute();
         tempurls = findViewById(R.id.tempurls);
         tempurls.setOnClickListener(new View.OnClickListener() {
@@ -135,15 +152,7 @@ public class bshortlinkedit extends AppCompatActivity  {
 
                 } else {
                     tempurlline.setVisibility(View.VISIBLE);
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-                    // Get the current date and time
-                    Date currentDate = new Date();
-
-                    // Format the current date and time using the SimpleDateFormat
-                    String formattedDateTime = dateFormat.format(currentDate);
-                    start.setText(formattedDateTime);
-                    end.setText(formattedDateTime);
                 }
             }
         });
@@ -175,6 +184,14 @@ public class bshortlinkedit extends AppCompatActivity  {
                 } else {
                     advancedsettings.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                new bshortlinkedit.NetworkRequestTask1().execute();
+
             }
         });
 scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -266,18 +283,44 @@ scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeList
                         map.put("url", dataObject.getString("url"));
                         map.put("location_url", dataObject.getString("location_url"));
                         map.put("clicks", dataObject.getInt("clicks"));
-                        map.put("start_date", dataObject.isNull("start_date") ? null : dataObject.getString("start_date"));
-                        map.put("end_date", dataObject.isNull("end_date") ? null : dataObject.getString("end_date"));
+                        if (dataObject.has("start_date") && !dataObject.isNull("start_date")) {
+                            map.put("start_date", dataObject.getString("start_date"));
+                        } else {
+                            map.put("start_date", " ");
+                        }
+                        if (dataObject.has("end_date") && !dataObject.isNull("end_date")) {
+                            map.put("end_date", dataObject.getString("end_date"));
+                        } else {
+                            map.put("end_date", " ");
+                        }
+
+
+                          if (dataObject.has("last_datetime") && !dataObject.isNull("last_datetime")) {
+                            map.put("last_datetime", dataObject.getString("last_datetime"));
+                        } else {
+                            map.put("last_datetime", " ");
+                        }
+                          if (dataObject.has("password") && !dataObject.isNull("password")) {
+                            map.put("password", dataObject.getString("password"));
+                        } else {
+                            map.put("password", " ");
+                        }
                         map.put("is_verified", dataObject.getInt("is_verified"));
                         map.put("is_enabled", dataObject.getInt("is_enabled"));
-                        map.put("last_datetime", dataObject.isNull("last_datetime") ? null : dataObject.getString("last_datetime"));
                         map.put("datetime", dataObject.getString("datetime"));
 
                         // Get the "settings" JSON object and add its key-value pairs to the HashMap
                         JSONObject settingsObject = dataObject.getJSONObject("settings");
-                        map.put("clicks_limit", settingsObject.isNull("clicks_limit") ? null : settingsObject.getInt("clicks_limit"));
-                        map.put("expiration_url", settingsObject.getString("expiration_url"));
-                        map.put("password", settingsObject.isNull("password") ? null : settingsObject.getString("password"));
+                        if (settingsObject.has("expiration_url") && !settingsObject.isNull("expiration_url")) {
+                            map.put("expiration_url", settingsObject.getString("expiration_url"));
+                        } else {
+                            map.put("expiration_url", " ");
+                        }
+                        if (settingsObject.has("clicks_limit") && !settingsObject.isNull("clicks_limit")) {
+                            map.put("clicks_limit", settingsObject.getString("clicks_limit"));
+                        } else {
+                            map.put("clicks_limit", " ");
+                        }
                         map.put("sensitive_content", settingsObject.getBoolean("sensitive_content"));
                         map.put("targeting_type", settingsObject.getString("targeting_type"));
                         // Get the "pixels_ids" JSON array and convert it to a List
@@ -293,11 +336,25 @@ scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeList
                         // Add the HashMap to the ArrayList
                         ArrayList<HashMap<String, Object>> list1 = new ArrayList<>();
                         list1.add(map);
+                        System.out.println(list1);
                         text.setText(list1.get(0).get("url").toString());
                         phonetext.setText(list1.get(0).get("location_url").toString());
                         messagetext.setText(list1.get(0).get("url").toString());
-                        // Print the result
-                        System.out.println(list1);
+                        start.setText(list1.get(0).get("start_date").toString());
+                        end.setText(list1.get(0).get("end_date").toString());
+                        clicks.setText(list1.get(0).get("clicks_limit").toString());
+                        expire.setText(list1.get(0).get("expiration_url").toString());
+                        passwordtext.setText(list1.get(0).get("password").toString());
+                        if (list1.get(0).get("sensitive_content").toString().equals("true")){
+                            scheduleswitch.setChecked(true);
+                        }else if (list1.get(0).get("sensitive_content").toString().equals("false")){
+                            scheduleswitch.setChecked(false);
+                        }
+                        if (list1.get(0).get("sensitive_content").toString().equals("true")){
+                           senseswitch.setChecked(true);
+                        } else if (list1.get(0).get("sensitive_content").toString().equals("false")){} {
+                            senseswitch.setChecked(false);
+                        }
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
@@ -329,6 +386,98 @@ scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeList
         private String response;
 
         public NetworkResponse(boolean success, String response) {
+            this.success = success;
+            this.response = response;
+        }
+
+        public boolean isSuccess() {
+            return success;
+        }
+
+        public String getResponse() {
+            return response;
+        }
+    }
+ private class NetworkRequestTask1 extends AsyncTask<Void, Void, bshortlinkedit.NetworkResponse> {
+
+        @Override
+        protected bshortlinkedit.NetworkResponse doInBackground(Void... voids) {
+            try {
+                OkHttpClient client = new OkHttpClient().newBuilder().build();
+
+                MediaType mediaType = MediaType.parse("application/json");
+                Map<String, String> rqmap3 = new HashMap<>();
+                Log.d("idwsw", getIntent().getExtras().getString("id"));
+
+                if(scheduleswitch.isChecked()){
+                    schedule = "true"; //schedule
+                }else if(!scheduleswitch.isChecked()){
+                    schedule = "false"; //schedule
+                }
+                if (senseswitch.isChecked()){
+                    sense = "true"; //sensitive
+                } else if (senseswitch.isChecked()){} {
+                    sense = "false"; //sense
+
+                }
+                RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                        .addFormDataPart("location_url",phonetext.getText().toString())
+                        .addFormDataPart("schedule",schedule)
+                        .addFormDataPart("start_date",start.getText().toString())
+                        .addFormDataPart("end_date",end.getText().toString())
+                        .addFormDataPart("clicks_limit",clicks.getText().toString())
+                        .addFormDataPart("expiration_url",expire.getText().toString())
+                        .addFormDataPart("sensitive_content", sense)
+                        .addFormDataPart("password",passwordtext.getText().toString().replace(" ", ""))
+                        .build();
+                Request request = new Request.Builder()
+                        .url("https://biolink.sabnode.com/api/links/"+getIntent().getExtras().getString("id"))
+                        .method("POST", body)
+                        .addHeader("Authorization", "Bearer dbb0fc75ba9f33be66e69a408f609838")
+                        .addHeader("Content-Type", "application/json")
+                        .build();
+                    return executeNetworkRequest(client, request);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new bshortlinkedit.NetworkResponse(false, "Error");
+            }
+        }
+
+        @Override
+        protected void onPostExecute(bshortlinkedit.NetworkResponse result) {
+            if (result != null) {
+                Log.d("Response", result.getResponse());
+                // Handle the result based on the returned NetworkResponse object
+                if (result.isSuccess()) {
+
+                } else {
+
+                    Toast.makeText(bshortlinkedit.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+        private bshortlinkedit.NetworkResponse executeNetworkRequest(OkHttpClient client, Request request) {
+            try (Response response = client.newCall(request).execute()) {
+                if (response.isSuccessful()) {
+                    // Convert the response body to a string
+                    String responseBody = response.body().string();
+                    return new bshortlinkedit.NetworkResponse(true, responseBody);
+                } else {
+                    return new bshortlinkedit.NetworkResponse(false, "Request failed: " + response.code());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return new bshortlinkedit.NetworkResponse(false, "Error");
+            }
+        }
+    }
+
+    private class NetworkResponse1 {
+        private boolean success;
+        private String response;
+
+        public NetworkResponse1(boolean success, String response) {
             this.success = success;
             this.response = response;
         }

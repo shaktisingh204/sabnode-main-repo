@@ -30,7 +30,7 @@
             android:background="@color/newedittext">
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/passwordtext"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="@android:color/transparent"
@@ -65,7 +65,7 @@
         android:padding="10dp"
         >
         <Switch
-            android:id="@+id/scheduleswitch"
+            android:id="@+id/senseswitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
