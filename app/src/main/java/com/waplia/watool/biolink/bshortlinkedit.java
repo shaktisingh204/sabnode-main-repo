@@ -428,7 +428,6 @@ scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeList
                 RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
                         .addFormDataPart("url",text.getText().toString())
                         .addFormDataPart("location_url",phonetext.getText().toString())
-                        .addFormDataPart("schedule",schedule)
                         .addFormDataPart("start_date",starts)
                         .addFormDataPart("end_date",stops)
                         .addFormDataPart("clicks_limit",clicks.getText().toString())
