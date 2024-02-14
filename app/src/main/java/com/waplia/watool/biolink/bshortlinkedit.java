@@ -242,7 +242,6 @@ scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeList
         protected bshortlinkedit.NetworkResponse doInBackground(Void... voids) {
             try {
                 OkHttpClient client = new OkHttpClient().newBuilder().build();
-
                 MediaType mediaType = MediaType.parse("application/json");
                 Map<String, String> rqmap3 = new HashMap<>();
                 Log.d("idwsw", getIntent().getExtras().getString("id"));
@@ -300,11 +299,7 @@ scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeList
                         } else {
                             map.put("last_datetime", " ");
                         }
-                          if (dataObject.has("password") && !dataObject.isNull("password")) {
-                            map.put("password", dataObject.getString("password"));
-                        } else {
-                            map.put("password", " ");
-                        }
+
                         map.put("is_verified", dataObject.getInt("is_verified"));
                         map.put("is_enabled", dataObject.getInt("is_enabled"));
                         map.put("datetime", dataObject.getString("datetime"));
@@ -320,6 +315,11 @@ scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeList
                             map.put("clicks_limit", settingsObject.getString("clicks_limit"));
                         } else {
                             map.put("clicks_limit", " ");
+                        }
+                        if (settingsObject.has("password") && !settingsObject.isNull("password")) {
+                            map.put("password", settingsObject.getString("password"));
+                        } else {
+                            map.put("password", " ");
                         }
                         map.put("sensitive_content", settingsObject.getBoolean("sensitive_content"));
                         map.put("targeting_type", settingsObject.getString("targeting_type"));
@@ -345,9 +345,9 @@ scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeList
                         clicks.setText(list1.get(0).get("clicks_limit").toString());
                         expire.setText(list1.get(0).get("expiration_url").toString());
                         passwordtext.setText(list1.get(0).get("password").toString());
-                        if (list1.get(0).get("sensitive_content").toString().equals("true")){
+                        if (list1.get(0).get("start_date").toString().equals("")){
                             scheduleswitch.setChecked(true);
-                        }else if (list1.get(0).get("sensitive_content").toString().equals("false")){
+                        }else if (list1.get(0).get("start_date").toString().equals("")){
                             scheduleswitch.setChecked(false);
                         }
                         if (list1.get(0).get("sensitive_content").toString().equals("true")){
@@ -415,7 +415,7 @@ scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeList
                     schedule = "false"; //schedule
                 }
                 if (senseswitch.isChecked()){
-                    sense = "true"; //sensitive
+                    sense = "true";
                 } else if (senseswitch.isChecked()){} {
                     sense = "false"; //sense
 
