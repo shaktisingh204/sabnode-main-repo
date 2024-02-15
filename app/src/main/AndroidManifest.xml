@@ -39,6 +39,10 @@
             android:exported="true"/>
         <activity android:name=".biolink.biodash"
             android:exported="true"/>
+        <activity android:name=".biolink.qrcode"
+            android:exported="true"/>
+        <activity android:name=".biolink.vcardlink"
+            android:exported="true"/>
         <activity android:name=".biolink.biolinks"
             android:exported="true"/>
         <activity android:name=".biolink.bshortlinkedit"

@@ -422,9 +422,7 @@ scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeList
                     sense = "true";
                 } else if (senseswitch.isChecked()){} {
                     sense = "false"; //sense
-
                 }
-
                 RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
                         .addFormDataPart("url",text.getText().toString())
                         .addFormDataPart("location_url",phonetext.getText().toString())
@@ -456,7 +454,6 @@ scheduleswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeList
                 if (result.isSuccess()) {
 
                 } else {
-
                     Toast.makeText(bshortlinkedit.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                 }
             }

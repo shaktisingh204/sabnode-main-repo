@@ -82,13 +82,18 @@ public class biolinks extends AppCompatActivity {
         newlink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               newlink();
-                /*Intent intent = new Intent(biolinks.this, bshortlinkedit.class);
-                startActivity(intent);*/
+                if (getIntent().getStringExtra("type").equals("qrcode")) {
+                    Intent intent = new Intent(biolinks.this, qrcode.class);
+                    startActivity(intent);
+                }  else if (getIntent().getStringExtra("type").equals("vcard")) {
+                    Intent intent = new Intent(biolinks.this, vcardlink.class);
+                    startActivity(intent);
+                }else{
+                    newlink();
+                }
             }
         }
         );
-        //https://app.sabnode.com/apiv1/biolinks/biolinks.php
         rq = new RequestNetwork(this);
         _rq_request_listener = new RequestNetwork.RequestListener() {
             @Override
