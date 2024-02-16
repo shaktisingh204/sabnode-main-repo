@@ -43,7 +43,7 @@ public class start extends AppCompatActivity {
         sp = getSharedPreferences("sabdata", MODE_PRIVATE);
 
         if (sp.getString("login","").equals("done")) {
-            Intent i = new Intent(start.this, dashboard.class);
+            Intent i = new Intent(start.this, plans.class);
             startActivity(i);
             finish();
         }else {

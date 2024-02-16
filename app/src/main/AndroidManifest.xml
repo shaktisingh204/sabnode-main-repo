@@ -27,6 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".plans"
+            android:exported="true"/>
         <activity android:name=".shortlink.linkdash"
             android:exported="true"/>
         <activity android:name=".shortlink.alllinks"
