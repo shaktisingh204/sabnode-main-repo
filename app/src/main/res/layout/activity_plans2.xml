@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/gpp"
-        android:text="The Base healthcare package with an outpatient addon"
+        android:text="Diamond Membership With all apps access"
         android:textColor="#56536c"
         android:textSize="14sp"
         android:textStyle="bold"
