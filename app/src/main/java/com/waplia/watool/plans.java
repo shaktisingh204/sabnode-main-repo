@@ -1,18 +1,24 @@
 package com.waplia.watool;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.gson.Gson;
@@ -34,8 +40,11 @@ import java.util.Iterator;
 
 public class plans extends AppCompatActivity {
     private RequestNetwork rq;
+    private RecyclerView biolinklist;
+    private RecyclerView recyclerView1;
     private RequestNetwork.RequestListener _rq_request_listener;
     private ArrayList<HashMap<String, Object>> list = new ArrayList<>();
+    private ArrayList<HashMap<String, Object>> list2 = new ArrayList<>();
     private HashMap<String, Object> rqmap = new HashMap<>();
     private KProgressHUD mProgressHUD;
     private TextView planname;
@@ -68,6 +77,8 @@ public class plans extends AppCompatActivity {
         line7 = findViewById(R.id.line7);
         line8 = findViewById(R.id.line8);
         next = findViewById(R.id.next);
+        biolinklist = findViewById(R.id.biolinklist1);
+        recyclerView1 = findViewById(R.id.biolinklist1);
         setRoundedCorners(line1, "00000000", "dadcdf", 20);
         setRoundedCorners(line2, "00000000", "dadcdf", 20);
         setRoundedCorners(line3, "00000000", "dadcdf", 20);
@@ -89,9 +100,7 @@ public class plans extends AppCompatActivity {
                     list = new Gson().fromJson(_response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
                     planname.setText(list.get(0).get("plan_name").toString());
                     String jsonString = list.get(0).get("durations").toString();
-
-                    plans yourClassInstance = new plans();
-                    yourClassInstance.parseJson(jsonString);
+                   parseJson(jsonString);
                     mProgressHUD.dismiss();
                 }catch(Exception e){
                     e.printStackTrace();
@@ -141,6 +150,45 @@ public class plans extends AppCompatActivity {
         linearLayout.setBackground(gradientDrawable);
         linearLayout.setElevation(5);
     }
+    public class Recyclerview1Adapter extends RecyclerView.Adapter<plans.Recyclerview1Adapter.ViewHolder> {
+        ArrayList<HashMap<String, Object>> _data;
+        public Recyclerview1Adapter(ArrayList<HashMap<String, Object>> _arr) {
+            _data = _arr;
+        }
+        @Override
+        public plans.Recyclerview1Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            LayoutInflater _inflater = getLayoutInflater();
+            View _v = _inflater.inflate(R.layout.planslist, null);
+            RecyclerView.LayoutParams _lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            _v.setLayoutParams(_lp);
+            return new plans.Recyclerview1Adapter.ViewHolder(_v);
+
+        }
+        @SuppressLint({"SetTextI18n", "UseCompatLoadingForDrawables"})
+        @Override
+        public void onBindViewHolder(plans.Recyclerview1Adapter.ViewHolder _holder, final int _position) {
+            View _view = _holder.itemView;
+            final LinearLayout plans = (LinearLayout) _view.findViewById(R.id.plans);
+            /*final TextView name = _view.findViewById(R.id.name);
+            final TextView url = _view.findViewById(R.id.url);
+            final TextView clicks = _view.findViewById(R.id.clicks);
+            final ImageView icon = _view.findViewById(R.id.icon);
+            final ImageView stats = _view.findViewById(R.id.stats);*/
+            setRoundedCorners(plans, "00000000", "dadcdf", 20);
+
+
+        }
+        @Override
+        public int getItemCount() {
+            return _data.size();
+        }
+        public class ViewHolder extends RecyclerView.ViewHolder {
+            public ViewHolder(View v) {
+                super(v);
+            }
+        }
+    }
+
 
     public void parseJson(String jsonString) {
         try {
@@ -158,16 +206,19 @@ public class plans extends AppCompatActivity {
                 map.put("name", name);
                 map.put("price", price);
 
-                list.add(map);
+                list2.add(map);
             }
-
-            // Now 'list' contains the parsed data
-            printList();
+            listviewshow();
+            Log.d("mylist", list2.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
-
+public void listviewshow(){
+        try {
+            recyclerView1.setLayoutManager(new LinearLayoutManager(plans.this, LinearLayoutManager.HORIZONTAL, false));
+            recyclerView1.setAdapter(new Recyclerview1Adapter(list2));}catch (Exception e) {e.printStackTrace();}
+}
     private void printList() {
         for (HashMap<String, Object> map : list) {
             System.out.println("name: " + map.get("name") + ", price: " + map.get("price"));

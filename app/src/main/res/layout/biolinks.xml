@@ -1,60 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:background="#fbfcfe"
-    android:layout_height="match_parent">
-
-    <androidx.cardview.widget.CardView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_margin="10dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="10dp">
+        android:background="#fbfcfe"
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:layout_height="55dp"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="10dp">
 
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:padding="4dp"
-                android:visibility="gone"
-                android:src="@drawable/ic_goal" />
-
-            <TextView
-                android:id="@+id/titletxt"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:fontFamily="@font/gpp"
-                android:gravity="center_vertical"
-                android:text="Biolink pages"
-                android:textColor="@color/carddark"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-<ImageView
-    android:id="@+id/newlink"
-    android:layout_width="40dp"
-    android:layout_height="40dp"
-    android:layout_gravity="center_vertical"
-    android:src="@drawable/plus"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/refreshLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-<androidx.recyclerview.widget.RecyclerView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/biolinklist"
-    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-</LinearLayout>
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:padding="4dp"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_goal" />
+
+                <TextView
+                    android:id="@+id/titletxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/gpp"
+                    android:gravity="center_vertical"
+                    android:text="Biolink pages"
+                    android:textColor="@color/carddark"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/newlink"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/plus"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/biolinklist"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </LinearLayout>
