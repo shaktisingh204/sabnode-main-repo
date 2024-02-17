@@ -27,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".plans"
+        <activity android:name=".plans2"
             android:exported="true"/>
         <activity android:name=".shortlink.linkdash"
             android:exported="true"/>

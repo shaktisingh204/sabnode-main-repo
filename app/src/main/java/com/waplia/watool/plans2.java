@@ -1,15 +1,12 @@
 package com.waplia.watool;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -18,14 +15,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
+import com.anychart.scales.Linear;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.kaopiz.kprogresshud.KProgressHUD;
-import com.waplia.watool.biolink.biolinks;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,13 +28,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 
-public class plans extends AppCompatActivity {
+public class plans2 extends AppCompatActivity {
+    private LinearLayout mainline;
+    private LinearLayout line1, line2, line3, line4, line5, line6, line7, line8, next;
+    private TextView btn, planname, price;
     private RequestNetwork rq;
     private RecyclerView biolinklist;
     private RecyclerView recyclerView1;
@@ -48,22 +42,24 @@ public class plans extends AppCompatActivity {
     private ArrayList<HashMap<String, Object>> list2 = new ArrayList<>();
     private HashMap<String, Object> rqmap = new HashMap<>();
     private KProgressHUD mProgressHUD;
-    private TextView planname;
-    private LinearLayout line1, line2, line3, line4, line5, line6, line7, line8, next;
+    private ImageView nextimg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_plans);
+        setContentView(R.layout.activity_plans2);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(Color.parseColor("#FFFFFF"));
+            window.setStatusBarColor(Color.parseColor("#201d3a"));
         }
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         getSupportActionBar().hide();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mainline = findViewById(R.id.mainline);
+        btn = findViewById(R.id.btn);
         planname = findViewById(R.id.planname);
+        price = findViewById(R.id.price);
         line1 = findViewById(R.id.line1);
         line2 = findViewById(R.id.line2);
         line3 = findViewById(R.id.line3);
@@ -72,18 +68,20 @@ public class plans extends AppCompatActivity {
         line6 = findViewById(R.id.line6);
         line7 = findViewById(R.id.line7);
         line8 = findViewById(R.id.line8);
+        line1.setVisibility(View.GONE);
+        line2.setVisibility(View.GONE);
+        line3.setVisibility(View.GONE);
+        line4.setVisibility(View.GONE);
+        line5.setVisibility(View.GONE);
+        line6.setVisibility(View.GONE);
+        line7.setVisibility(View.GONE);
+        line8.setVisibility(View.GONE);
         next = findViewById(R.id.next);
-        biolinklist = findViewById(R.id.biolinklist1);
-        recyclerView1 = findViewById(R.id.biolinklist1);
-        setRoundedCorners(line1, "00000000", "dadcdf", 20);
-        setRoundedCorners(line2, "00000000", "dadcdf", 20);
-        setRoundedCorners(line3, "00000000", "dadcdf", 20);
-        setRoundedCorners(line4, "00000000", "dadcdf", 20);
-        setRoundedCorners(line5, "00000000", "dadcdf", 20);
-        setRoundedCorners(line6, "00000000", "dadcdf", 20);
-        setRoundedCorners(line7, "00000000", "dadcdf", 20);
-        setRoundedCorners(line8, "00000000", "dadcdf", 20);
-        setRoundedCorners(next, "ffffff", "dadcdf", 360);
+        nextimg = findViewById(R.id.nextimg);
+        setRoundedCorners(mainline, "0f0d1e", "dadcdf", 20, 0);
+        setRoundedCorners(btn, "5b35d5", "dadcdf", 20, 0);
+        setRoundedCorners(next, "201d3a", "dadcdf", 360, 0);
+        nextimg.setColorFilter(Color.parseColor("#FFFFFF"), PorterDuff.Mode.MULTIPLY);
         rq = new RequestNetwork(this);
         _rq_request_listener = new RequestNetwork.RequestListener() {
             @Override
@@ -95,8 +93,32 @@ public class plans extends AppCompatActivity {
                     Log.d("plansdata", _response);
                     list = new Gson().fromJson(_response, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
                     planname.setText(list.get(0).get("plan_name").toString());
-                    String jsonString = list.get(0).get("durations").toString();
-                   parseJson(jsonString);
+                    price.setText("RS " + list.get(0).get("plan_price").toString());
+
+                    if (list.get(0).get("assigned_apps").toString().contains("6")){
+                    line1.setVisibility(View.VISIBLE);
+                    }
+                    if (list.get(0).get("assigned_apps").toString().contains("4")){
+                        line2.setVisibility(View.VISIBLE);
+                    }
+                    if (list.get(0).get("assigned_apps").toString().contains("2")){
+                        line3.setVisibility(View.VISIBLE);
+                    }
+                    if (list.get(0).get("assigned_apps").toString().contains("7")){
+                        line4.setVisibility(View.VISIBLE);
+                    }
+                    if (list.get(0).get("assigned_apps").toString().contains("3")){
+                        line5.setVisibility(View.VISIBLE);
+                    }
+                    if (list.get(0).get("assigned_apps").toString().contains("1")){
+                        line6.setVisibility(View.VISIBLE);
+                    }
+                    if (list.get(0).get("assigned_apps").toString().contains("9")){
+                        line7.setVisibility(View.VISIBLE);
+                    }
+                    if (list.get(0).get("assigned_apps").toString().contains("8")){
+                        line8.setVisibility(View.VISIBLE);
+                    }
                     mProgressHUD.dismiss();
                 }catch(Exception e){
                     e.printStackTrace();
@@ -109,21 +131,19 @@ public class plans extends AppCompatActivity {
                 final String _message = _param2;
             }
         };
-        mProgressHUD = KProgressHUD.create(plans.this)
+        mProgressHUD = KProgressHUD.create(plans2.this)
                 .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
                 .setLabel("Please wait")
                 .setCancellable(false)
                 .show();
-
         rqmap.put("id", 11);
         rq.setParams(rqmap, 0);
         rq.startRequestNetwork(RequestNetworkController.POST, getResources().getString(R.string.suburl)+"plans.php","", _rq_request_listener);
 
     }
-    private void setRoundedCorners(View linearLayout, String color, String scolor, float radius) {
+    private void setRoundedCorners(View linearLayout, String color, String scolor, float radius, int storck) {
         // Create a new GradientDrawable
         GradientDrawable gradientDrawable = new GradientDrawable();
-
         // Set the shape to a rectangle
         gradientDrawable.setShape(GradientDrawable.RECTANGLE);
 
@@ -134,7 +154,7 @@ public class plans extends AppCompatActivity {
         gradientDrawable.setColor(Color.parseColor("#" + color));
 
         // Set the stroke (optional)
-        gradientDrawable.setStroke(4, Color.parseColor("#" + scolor));
+        gradientDrawable.setStroke(storck, Color.parseColor("#" + scolor));
 
         // Set the gradient type (optional)
         gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
@@ -146,48 +166,6 @@ public class plans extends AppCompatActivity {
         linearLayout.setBackground(gradientDrawable);
         linearLayout.setElevation(5);
     }
-    public class Recyclerview1Adapter extends RecyclerView.Adapter<plans.Recyclerview1Adapter.ViewHolder> {
-        ArrayList<HashMap<String, Object>> _data;
-        public Recyclerview1Adapter(ArrayList<HashMap<String, Object>> _arr) {
-            _data = _arr;
-        }
-        @Override
-        public plans.Recyclerview1Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            LayoutInflater _inflater = getLayoutInflater();
-            View _v = _inflater.inflate(R.layout.planslist, null);
-            RecyclerView.LayoutParams _lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            _v.setLayoutParams(_lp);
-            return new plans.Recyclerview1Adapter.ViewHolder(_v);
-
-        }
-        @SuppressLint({"SetTextI18n", "UseCompatLoadingForDrawables"})
-        @Override
-        public void onBindViewHolder(plans.Recyclerview1Adapter.ViewHolder _holder, final int _position) {
-            View _view = _holder.itemView;
-            final LinearLayout plans = (LinearLayout) _view.findViewById(R.id.plans);
-            final TextView name = _view.findViewById(R.id.name);
-            final TextView rate = _view.findViewById(R.id.price);
-            name.setText(_data.get(_position).get("name").toString());
-            rate.setText(_data.get(_position).get("price").toString());
-            /*final TextView clicks = _view.findViewById(R.id.clicks);
-            final ImageView icon = _view.findViewById(R.id.icon);
-            final ImageView stats = _view.findViewById(R.id.stats);*/
-            setRoundedCorners(plans, "00000000", "dadcdf", 20);
-
-
-        }
-        @Override
-        public int getItemCount() {
-            return _data.size();
-        }
-        public class ViewHolder extends RecyclerView.ViewHolder {
-            public ViewHolder(View v) {
-                super(v);
-            }
-        }
-    }
-
-
     public void parseJson(String jsonString) {
         try {
             JSONObject jsonObject = new JSONObject(jsonString);
@@ -206,22 +184,11 @@ public class plans extends AppCompatActivity {
 
                 list2.add(map);
             }
-            listviewshow();
             Log.d("mylist", list2.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
-public void listviewshow(){
-        try {
-
-          /*  recyclerView1.setLayoutManager(new LinearLayoutManager(plans.this, LinearLayoutManager.HORIZONTAL, false));
-           */
-            int numberOfColumns = 3; // Change this to the desired number of columns
-            recyclerView1.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
-
-            recyclerView1.setAdapter(new Recyclerview1Adapter(list2));}catch (Exception e) {e.printStackTrace();}
-}
     private void printList() {
         for (HashMap<String, Object> map : list) {
             System.out.println("name: " + map.get("name") + ", price: " + map.get("price"));
